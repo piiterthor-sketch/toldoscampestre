@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toldos Campestre | Proteção, Conforto e Elegância</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Paleta extraída da Identidade Visual */
+            --primary-dark: #0f4c3a; /* Verde Escuro Premium */
+            --accent-green: #82c877; /* Verde Folha Claro */
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --transition: all 0.3s ease;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent-green); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a:hover { color: var(--accent-green); }
+
+        .cta-header {
+            background: var(--primary-dark);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-header:hover {
+            background: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        /* --- MOBILE MENU --- */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 76, 58, 0.7), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-pulse {
+            display: inline-block;
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(130, 200, 119, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(130, 200, 119, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(130, 200, 119, 0); }
+        }
+
+        /* --- QUEM SOMOS --- */
+        .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 20px 20px 0 var(--accent-green);
+        }
+
+        .diff-icons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .diff-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+        }
+
+        .diff-item i {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- PRODUTOS --- */
+        .products { background: var(--bg-light); }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; color: var(--primary-dark); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img { height: 200px; background: #ddd; background-size: cover; background-position: center; }
+
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { margin-bottom: 0.5rem; color: var(--primary-dark); }
+
+        /* --- PORTFÓLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .portfolio-item {
+            height: 250px;
+            background-size: cover;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            filter: grayscale(0.5);
+        }
+
+        .portfolio-item:hover { filter: grayscale(0); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover { color: var(--accent-green); }
+
+        /* --- WHATSAPP FIXO --- */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .mobile-toggle { display: block; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .about-image { box-shadow: 10px 10px 0 var(--accent-green); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Toldos <span>Campestre</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/5511999999999" class="cta-header">Orçamento Rápido</a>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Proteção, Conforto e Elegância <br> para o seu Ambiente.</h1>
+            <p>Toldos e coberturas sob medida com a qualidade e durabilidade que você procura.</p>
+            <a href="https://wa.me/5511999999999" class="btn-pulse">Fale com um Especialista</a>
+        </div>
+    </section>
+
+    <section class="section" id="sobre">
+        <div class="grid-2">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Sobre Nós" class="about-image">
+            <div>
+                <h2 style="color: var(--primary-dark)">Transformando Áreas Externas</h2>
+                <p>Na <strong>Toldos Campestre</strong>, unimos natureza e arquitetura. Somos especialistas em coberturas que não apenas protegem, mas elevam o design do seu espaço gourmet ou comercial.</p>
+                <div class="diff-icons">
+                    <div class="diff-item"><i class="fas fa-hammer"></i><p>Robustez</p></div>
+                    <div class="diff-item"><i class="fas fa-leaf"></i><p>Natureza</p></div>
+                    <div class="diff-item"><i class="fas fa-shield-alt"></i><p>Proteção</p></div>
+                    <div class="diff-item"><i class="fas fa-magic"></i><p>Modernidade</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section products" id="produtos">
+        <h2 class="section-title">Nossas Soluções</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="product-info">
+                    <h3>Articulados</h3>
+                    <p>Modernidade e praticidade para sua varanda com controle total de sombra.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="product-info">
+                    <h3>Policarbonato</h3>
+                    <p>Proteção contra chuva com 100% de aproveitamento da luz natural.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1513584684374-8bdb7489feef?auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="product-info">
+                    <h3>Áreas Gourmet</h3>
+                    <p>Coberturas fixas ou retráteis para o seu lazer em família.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Portfólio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" style="background-image: url('https://images.unsplash.com/photo-1590066304602-4f7e05f42336?auto=format&fit=crop&w=500&q=80')"></div>
+            <div class="portfolio-item" style="background-image: url('https://images.unsplash.com/photo-1524312644410-b2572e2563bb?auto=format&fit=crop&w=500&q=80')"></div>
+            <div class="portfolio-item" style="background-image: url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=500&q=80')"></div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-grid">
+            <div>
+                <h3>Toldos Campestre</h3>
+                <p>Qualidade que protege o que você ama.</p>
+                <div class="social-icons" style="margin-top: 1rem;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#sobre">Empresa</a></li>
+                    <li><a href="#produtos">Serviços</a></li>
+                    <li><a href="#portfolio">Projetos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@toldoscampestre.com.br</p>
+            </div>
+        </div>
+        <center><small>© 2023 Toldos Campestre. Todos os direitos reservados.</small></center>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-fixed" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Smooth Scroll simples
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Menu Mobile (Simulação simples)
+        const toggle = document.querySelector('.mobile-toggle');
+        const nav = document.querySelector('nav ul');
+        toggle.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '70px';
+            nav.style.left = '0';
+            nav.style.width = '100%';
+            nav.style.background = 'white';
+            nav.style.padding = '1rem';
+        });
+    </script>
+</body>
+</html>
