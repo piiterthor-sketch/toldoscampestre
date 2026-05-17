@@ -73,7 +73,7 @@
         }
 
         .logo-img {
-            width: 150px;
+            width: 250px;
             height: auto;
             display: block;
             transition: var(--transition);
@@ -139,7 +139,9 @@
         }
 
         .btn-pulse {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: var(--accent-green);
             color: var(--primary-dark);
             padding: 1rem 2.5rem;
@@ -288,7 +290,7 @@
             box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5);
         }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (Acertado e Estilizado) --- */
         footer {
             background: #0a3528;
             color: rgba(255, 255, 255, 0.8);
@@ -297,37 +299,86 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 4rem;
             max-width: 1200px;
             margin: 0 auto 3rem auto;
         }
 
-        .footer-logo-img {
-            width: 150px;
-            height: auto;
-            display: block;
-            margin-bottom: 1rem;
+        .footer-col {
+            display: flex;
+            flex-direction: column;
         }
 
-        .footer-title { color: white; font-family: 'Montserrat', sans-serif; margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a:hover { color: var(--accent-green); padding-left: 5px; }
+        .footer-logo-img {
+            width: 250px;
+            height: auto;
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-description {
+            max-width: 450px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-title { 
+            color: white; 
+            font-family: 'Montserrat', sans-serif; 
+            margin-bottom: 1.5rem; 
+            font-size: 1.1rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item i {
+            color: var(--accent-green);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
 
         .social-icons a {
             font-size: 1.5rem;
             margin-right: 1.2rem;
             color: white;
+            display: inline-block;
         }
-        .social-icons a:hover { color: var(--accent-green); }
+        .social-icons a:hover { color: var(--accent-green); transform: translateY(-2px); }
 
         .footer-bottom {
-            text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
         }
+
+        .footer-bottom-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dev-credits a {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+        .dev-credits a:hover { text-decoration: underline; }
 
         /* --- BOTÃO FLUTUANTE --- */
         .whatsapp-fixed {
@@ -361,8 +412,8 @@
             .about-image { box-shadow: 12px 12px 0 var(--accent-green); }
             .portfolio-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            /* Reduz um pouco o tamanho da logo em telas mobile menores */
-            .logo-img { width: 180px; } 
+            .footer-bottom-container { flex-direction: column; text-align: center; }
+            .logo-img { width: 200px; } 
         }
     </style>
 </head>
@@ -385,7 +436,7 @@
                 </ul>
             </nav>
             
-            <a href="https://wa.me/5531986238781?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." target="_blank" class="cta-header">Orçamento Rápido</a>
+            <a href="https://wa.me/553144447958?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." target="_blank" class="cta-header">Orçamento Rápido</a>
             
             <div class="mobile-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
@@ -395,7 +446,9 @@
         <div class="hero-content">
             <h1>Proteção, Conforto e Elegância <br> para o seu Ambiente.</h1>
             <p>Toldos e coberturas sob medida com a qualidade e durabilidade que você procura para valorizar seu imóvel residencial ou comercial.</p>
-            
+            <a href="https://wa.me/553144447958?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." target="_blank" class="btn-pulse">
+                <i class="fab fa-whatsapp"></i> Fale com um Especialista
+            </a>
         </div>
     </section>
 
@@ -499,46 +552,49 @@
     <section class="contact-cta">
         <h2>Pronto para transformar seu espaço?</h2>
         <p>Entre em contato hoje mesmo. Nossa equipe técnica está pronta para realizar uma consultoria e fazer um orçamento sem qualquer compromisso.</p>
-        
+        <a href="https://wa.me/553144447958?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." target="_blank" class="btn-whatsapp-large">
+            <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+        </a>
     </section>
 
     <footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <img src="images/logo.jpg" alt="Logo Toldos Campestre" class="footer-logo-img">
-            <p class="footer-description">Garantindo sofisticação, robustez e a proteção ideal para o seu ambiente doméstico ou profissional.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="images/logo.jpg" alt="Logo Toldos Campestre" class="footer-logo-img">
+                <p class="footer-description">Garantindo sofisticação, robustez e a proteção ideal para o seu ambiente doméstico ou profissional.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">Contato e Redes</h4>
+                
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>31 34462137</span>
+                </div>
+                
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contato@toldoscampestre.com.br</span>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        
-        <div class="footer-col">
-            <h4 class="footer-title">Contato e Redes</h4>
-            
-            <div class="footer-contact-item">
-                <i class="fas fa-phone"></i>
-                <span>31 34462137</span>
-            </div>
-            
-            <div class="footer-contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>contato@toldoscampestre.com.br</span>
-            </div>
-            
-            <div class="social-icons">
-                <a href="https://instagram.com/" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div class="footer-bottom">
-        <div class="footer-bottom-container">
-            <p>&copy; 2026 Toldos Campestre. Todos os direitos reservados.</p>
-            <p class="dev-credits">
-                Desenvolvido por <a href="https://devduo.tec.br/" target="_blank" rel="noopener noreferrer">DevDuo</a>
-            </p>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 Toldos Campestre. Todos os direitos reservados.</p>
+                <p class="dev-credits">
+                    Desenvolvido por <a href="https://devduo.tec.br/" target="_blank" rel="noopener noreferrer">DevDuo</a>
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
     <a href="https://wa.me/553144447958?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." class="whatsapp-fixed" target="_blank" aria-label="Botão fixo WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
