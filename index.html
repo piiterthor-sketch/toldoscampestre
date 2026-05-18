@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -62,29 +60,46 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.8rem 5%;
+            padding: 0 5%; /* Removido o padding vertical para a logo encostar no limite da faixa */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px; /* Fixa a altura da faixa do menu */
         }
 
         /* Ajuste do Campo da Logomarca */
         .brand-container {
             display: flex;
             align-items: center;
+            height: 100%;
+        }
+
+        .brand-container a {
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         .logo-img {
-            width: 100px;
-            height: auto;
+            height: 100%; /* Ocupa 100% da altura da faixa (70px) */
+            width: auto;  /* Ajusta a largura proporcionalmente à imagem */
+            max-height: 70px;
             display: block;
+            object-fit: contain; /* Garante que a imagem não distorça */
             transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a:hover, nav a.active { color: var(--accent-green); }
@@ -292,7 +307,7 @@
             box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5);
         }
 
-        /* --- FOOTER (Acertado e Estilizado) --- */
+        /* --- FOOTER --- */
         footer {
             background: #0a3528;
             color: rgba(255, 255, 255, 0.8);
@@ -313,10 +328,12 @@
         }
 
         .footer-logo-img {
-            width: 100px;
-            height: auto;
+            height: 70px; /* Mantém o padrão visual do topo no rodapé */
+            width: auto;
             display: block;
+            object-fit: contain;
             margin-bottom: 1.2rem;
+            align-self: flex-start;
         }
 
         .footer-description {
@@ -415,7 +432,148 @@
             .portfolio-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .footer-bottom-container { flex-direction: column; text-align: center; }
-            .logo-img { width: 100px; } 
+            .nav-container { height: 60px; } /* Reduz ligeiramente a faixa no mobile */
+            .logo-img { max-height: 60px; } 
+            .footer-logo-img { height: 60px; }
+        }
+    </style>
+    
+    <style>
+        /* CSS Adicional da Seção de Produtos */
+        .products-bg{
+            background: #ffffff;
+            padding: 100px 5%;
+        }
+
+        .product-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card{
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.10);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover{
+            transform: translateY(-10px);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+        }
+
+        .product-img{
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .product-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .product-card:hover .product-img img{
+            transform: scale(1.12);
+        }
+
+        .product-info{
+            padding: 30px;
+        }
+
+        .product-info h3{
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .product-info p{
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        @media(max-width: 1024px){
+            .product-grid{ grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media(max-width: 768px){
+            .products-bg{ padding: 80px 20px; }
+            .product-grid{ grid-template-columns: 1fr; gap: 25px; }
+            .product-img{ height: 240px; }
+            .product-info{ padding: 25px; }
+            .product-info h3{ font-size: 21px; }
+            .product-info p{ font-size: 15px; }
+        }
+    </style>
+
+    <style>
+        /* CSS Adicional da Seção de Portfólio */
+        #portfolio{
+            padding: 100px 5%;
+            background: #f8f8f8;
+        }
+
+        .portfolio-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-item{
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            height: 340px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transition: 0.4s ease;
+        }
+
+        .portfolio-item img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .portfolio-item:hover img{ transform: scale(1.12); }
+        .portfolio-item:hover{ transform: translateY(-8px); }
+
+        .portfolio-overlay{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 30px 25px;
+            background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.05));
+            color: #fff;
+        }
+
+        .portfolio-overlay h4{
+            font-size: 22px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .portfolio-overlay p{
+            font-size: 15px;
+            opacity: 0.92;
+        }
+
+        @media(max-width: 768px){
+            #portfolio{ padding: 80px 20px; }
+            .portfolio-grid{ grid-template-columns: 1fr; gap: 20px; }
+            .portfolio-item{ height: 280px; }
+            .portfolio-overlay h4{ font-size: 20px; }
         }
     </style>
 </head>
@@ -448,7 +606,6 @@
         <div class="hero-content">
             <h1>Proteção, Conforto e Elegância <br> para o seu Ambiente.</h1>
             <p>Toldos e coberturas sob medida com a qualidade e durabilidade que você procura para valorizar seu imóvel residencial ou comercial.</p>
-            
         </div>
     </section>
 
@@ -469,418 +626,118 @@
         </div>
     </section>
 
-   <!-- PRODUTOS / SOLUÇÕES -->
-<section class="section products-bg" id="produtos">
+    <section class="section products-bg" id="produtos">
+        <h2 class="section-title">Nossas Soluções</h2>
+        <p class="section-subtitle">
+            Estruturas robustas projetadas com materiais premium para garantir máxima durabilidade e beleza estética.
+        </p>
 
-    <h2 class="section-title">Nossas Soluções</h2>
-
-    <p class="section-subtitle">
-        Estruturas robustas projetadas com materiais premium para garantir máxima durabilidade e beleza estética.
-    </p>
-
-    <div class="product-grid">
-
-        <!-- CARD 1 -->
-        <div class="product-card">
-
-            <div class="product-img">
-                <img src="images/toldo7.jpg" alt="Toldo Articulado">
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/toldo7.jpg" alt="Toldo Articulado">
+                </div>
+                <div class="product-info">
+                    <h3>Toldos Articulados e Retráteis</h3>
+                    <p>Controle total de sombra e ventilação para pátios ou varandas de forma manual ou motorizada.</p>
+                </div>
             </div>
 
-            <div class="product-info">
-                <h3>Toldos Articulados e Retráteis</h3>
-
-                <p>
-                    Controle total de sombra e ventilação para pátios ou varandas de forma manual ou motorizada.
-                </p>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/toldo8.jpg" alt="Cobertura de Policarbonato">
+                </div>
+                <div class="product-info">
+                    <h3>Coberturas de Policarbonato</h3>
+                    <p>Total proteção contra chuvas e raios UV agressivos sem perder o aproveitamento da iluminação natural.</p>
+                </div>
             </div>
 
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/toldo10.jpg" alt="Área Gourmet">
+                </div>
+                <div class="product-info">
+                    <h3>Varandas e Áreas Gourmet</h3>
+                    <p>Fechamentos sob medida perfeitos para estender sua área de lazer com requinte.</p>
+                </div>
+            </div>
         </div>
-
-        <!-- CARD 2 -->
-        <div class="product-card">
-
-            <div class="product-img">
-                <img src="images/toldo8.jpg" alt="Cobertura de Policarbonato">
-            </div>
-
-            <div class="product-info">
-                <h3>Coberturas de Policarbonato</h3>
-
-                <p>
-                    Total proteção contra chuvas e raios UV agressivos sem perder o aproveitamento da iluminação natural.
-                </p>
-            </div>
-
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="product-card">
-
-            <div class="product-img">
-                <img src="images/toldo10.jpg" alt="Área Gourmet">
-            </div>
-
-            <div class="product-info">
-                <h3>Varandas e Áreas Gourmet</h3>
-
-                <p>
-                    Fechamentos sob medida perfeitos para estender sua área de lazer com requinte.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CSS -->
-<style>
-
-/* ===== PRODUTOS ===== */
-
-.products-bg{
-    background: #ffffff;
-    padding: 100px 5%;
-}
-
-/* GRID */
-
-.product-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 50px;
-}
-
-/* CARD */
-
-.product-card{
-    background: #fff;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.10);
-    transition: all 0.4s ease;
-}
-
-/* HOVER */
-
-.product-card:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 18px 45px rgba(0,0,0,0.18);
-}
-
-/* IMAGEM */
-
-.product-img{
-    width: 100%;
-    height: 260px;
-    overflow: hidden;
-}
-
-.product-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-    display: block;
-}
-
-.product-card:hover .product-img img{
-    transform: scale(1.12);
-}
-
-/* TEXTO */
-
-.product-info{
-    padding: 30px;
-}
-
-.product-info h3{
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #111;
-    font-weight: 700;
-}
-
-.product-info p{
-    color: #666;
-    line-height: 1.8;
-    font-size: 16px;
-}
-
-/* RESPONSIVO */
-
-@media(max-width: 1024px){
-
-    .product-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media(max-width: 768px){
-
-    .products-bg{
-        padding: 80px 20px;
-    }
-
-    .product-grid{
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .product-img{
-        height: 240px;
-    }
-
-    .product-info{
-        padding: 25px;
-    }
-
-    .product-info h3{
-        font-size: 21px;
-    }
-
-    .product-info p{
-        font-size: 15px;
-    }
-
-}
-
-</style>
-            
     </section>
-<!-- PORTFÓLIO -->
-<section class="section" id="portfolio">
+                
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Nosso Portfólio</h2>
+        <p class="section-subtitle">
+            Conheça o padrão dos projetos executados recentemente por nossa equipe de especialistas.
+        </p>
 
-    <h2 class="section-title">Nosso Portfólio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/toldo1.jpg" alt="Toldo Premium 1">
+                <div class="portfolio-overlay">
+                    <h4>Residência Campestre Premium</h4>
+                    <p>Toldo Retrátil Articulado</p>
+                </div>
+            </div>
 
-    <p class="section-subtitle">
-        Conheça o padrão dos projetos executados recentemente por nossa equipe de especialistas.
-    </p>
+            <div class="portfolio-item">
+                <img src="images/toldo2.jpg" alt="Toldo Premium 2">
+                <div class="portfolio-overlay">
+                    <h4>Espaço Gourmet Integrado</h4>
+                    <p>Cobertura Fixa Estrutural</p>
+                </div>
+            </div>
 
-    <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/toldo3.jpg" alt="Toldo Premium 3">
+                <div class="portfolio-overlay">
+                    <h4>Bistrô e Fachada Comercial</h4>
+                    <p>Toldo Fixo com Design Italiano</p>
+                </div>
+            </div>
 
-        <!-- FOTO 1 -->
-        <div class="portfolio-item">
-            <img src="images/toldo1.jpg" alt="Toldo Premium 1">
+            <div class="portfolio-item">
+                <img src="images/toldo4.jpg" alt="Toldo Premium 4">
+                <div class="portfolio-overlay">
+                    <h4>Varanda Residencial Moderna</h4>
+                    <p>Toldo Cortina de Alta Resistência</p>
+                </div>
+            </div>
 
-            <div class="portfolio-overlay">
-                <h4>Residência Campestre Premium</h4>
-                <p>Toldo Retrátil Articulado</p>
+            <div class="portfolio-item">
+                <img src="images/toldo5.jpg" alt="Toldo Premium 5">
+                <div class="portfolio-overlay">
+                    <h4>Garagem e Área de Acesso</h4>
+                    <p>Cobertura de Policarbonato</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="images/toldo6.jpg" alt="Toldo Premium 6">
+                <div class="portfolio-overlay">
+                    <h4>Terraço de Lazer Campestre</h4>
+                    <p>Toldo Abre-e-Fecha Premium</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- FOTO 2 -->
-        <div class="portfolio-item">
-            <img src="images/toldo2.jpg" alt="Toldo Premium 2">
-
-            <div class="portfolio-overlay">
-                <h4>Espaço Gourmet Integrado</h4>
-                <p>Cobertura Fixa Estrutural</p>
-            </div>
-        </div>
-
-        <!-- FOTO 3 -->
-        <div class="portfolio-item">
-            <img src="images/toldo3.jpg" alt="Toldo Premium 3">
-
-            <div class="portfolio-overlay">
-                <h4>Bistrô e Fachada Comercial</h4>
-                <p>Toldo Fixo com Design Italiano</p>
-            </div>
-        </div>
-
-        <!-- FOTO 4 -->
-        <div class="portfolio-item">
-            <img src="images/toldo4.jpg" alt="Toldo Premium 4">
-
-            <div class="portfolio-overlay">
-                <h4>Varanda Residencial Moderna</h4>
-                <p>Toldo Cortina de Alta Resistência</p>
-            </div>
-        </div>
-
-        <!-- FOTO 5 -->
-        <div class="portfolio-item">
-            <img src="images/toldo5.jpg" alt="Toldo Premium 5">
-
-            <div class="portfolio-overlay">
-                <h4>Garagem e Área de Acesso</h4>
-                <p>Cobertura de Policarbonato</p>
-            </div>
-        </div>
-
-        <!-- FOTO 6 -->
-        <div class="portfolio-item">
-            <img src="images/toldo6.jpg" alt="Toldo Premium 6">
-
-            <div class="portfolio-overlay">
-                <h4>Terraço de Lazer Campestre</h4>
-                <p>Toldo Abre-e-Fecha Premium</p>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CSS -->
-<style>
-
-/* ===== PORTFÓLIO ===== */
-
-#portfolio{
-    padding: 100px 5%;
-    background: #f8f8f8;
-}
-
-.section-title{
-    text-align: center;
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #111;
-}
-
-.section-subtitle{
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px;
-    color: #666;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-/* GRID */
-
-.portfolio-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-/* CARD */
-
-.portfolio-item{
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px;
-    height: 340px;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    transition: 0.4s ease;
-}
-
-/* IMAGEM */
-
-.portfolio-item img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-    display: block;
-}
-
-/* EFEITO HOVER */
-
-.portfolio-item:hover img{
-    transform: scale(1.12);
-}
-
-.portfolio-item:hover{
-    transform: translateY(-8px);
-}
-
-/* OVERLAY */
-
-.portfolio-overlay{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 30px 25px;
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.88),
-        rgba(0,0,0,0.05)
-    );
-    color: #fff;
-}
-
-.portfolio-overlay h4{
-    font-size: 22px;
-    margin-bottom: 8px;
-    font-weight: 700;
-}
-
-.portfolio-overlay p{
-    font-size: 15px;
-    opacity: 0.92;
-}
-
-/* RESPONSIVO */
-
-@media(max-width: 1024px){
-
-    .portfolio-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media(max-width: 768px){
-
-    #portfolio{
-        padding: 80px 20px;
-    }
-
-    .section-title{
-        font-size: 32px;
-    }
-
-    .section-subtitle{
-        font-size: 16px;
-        margin-bottom: 40px;
-    }
-
-    .portfolio-grid{
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .portfolio-item{
-        height: 280px;
-    }
-
-    .portfolio-overlay h4{
-        font-size: 20px;
-    }
-
-}
-
-</style>
-
-  <section class="contact-cta">
-    <h2>Há 44 anos protegendo e valorizando ambientes</h2>
-
-    <p>
-        Há 44 anos, o Senhor Francisco deu início a um sonho movido por dedicação, 
-        trabalho honesto e paixão por criar soluções que protegessem famílias e empresas. 
-        Assim nasceu nossa empresa, especializada em toldos e proteções para áreas externas, 
-        construída com compromisso, qualidade e excelência em cada projeto realizado.
-    </p>
-
-    <p>
-        Ao longo das décadas, conquistamos a confiança de nossos clientes oferecendo 
-        materiais duráveis, acabamento impecável e atendimento personalizado. 
-        Hoje, seguimos transformando ambientes externos em espaços mais confortáveis, 
-        seguros e sofisticados, mantendo vivo o legado de tradição e confiança deixado 
-        pelo senhor Francisco.
-    </p>
-</section>
+    <section class="contact-cta">
+        <h2>Há 44 anos protegendo e valorizando ambientes</h2>
+        <p>
+            Há 44 anos, o Senhor Francisco deu início a um sonho movido por dedicação, 
+            trabalho honesto e paixão por criar soluções que protegessem famílias e empresas. 
+            Assim nasceu nossa empresa, especializada em toldos e proteções para áreas externas, 
+            construída com compromisso, qualidade e excelência em cada projeto realizado.
+        </p>
+        <p>
+            Ao longo das décadas, conquistamos a confiança de nossos clientes oferecendo 
+            materiais duráveis, acabamento impecável e atendimento personalizado. 
+            Hoje, seguimos transformando ambientes externos em espaços mais confortáveis, 
+            seguros e sofisticados, mantendo vivo o legado de tradição e confiança deixado 
+            pelo senhor Francisco.
+        </p>
+    </section>
 
     <footer>
         <div class="footer-grid">
@@ -894,7 +751,7 @@
                 
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>31 44447958/31 34462137</span>
+                    <span>31 44447958 / 31 34462137</span>
                 </div>
                 
                 <div class="footer-contact-item">
@@ -903,10 +760,10 @@
                 </div>
                 
                 <div class="social-icons">
-    <a href="https://instagram.com/toldos_campestre" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
+                    <a href="https://instagram.com/toldos_campestre" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -936,7 +793,7 @@
                 navLinksList.style.display = 'flex';
                 navLinksList.style.flexDirection = 'column';
                 navLinksList.style.position = 'absolute';
-                navLinksList.style.top = '75px';
+                navLinksList.style.top = '70px'; /* Alinhado com a altura da faixa */
                 navLinksList.style.left = '0';
                 navLinksList.style.width = '100%';
                 navLinksList.style.background = 'white';
