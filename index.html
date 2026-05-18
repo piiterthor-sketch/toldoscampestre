@@ -46,25 +46,35 @@
 
         a { text-decoration: none; color: inherit; transition: var(--transition); }
 
-        /* --- HEADER --- */
+        /* --- HEADER TRANSPARENTE --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent; /* Deixa o fundo transparente */
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: var(--transition); /* Suaviza a transição ao rolar a página */
+        }
+
+        /* Classe ativada via JavaScript ao rolar a página */
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 5%; /* Removido o padding vertical para a logo encostar no limite da faixa */
+            padding: 0 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px; /* Fixa a altura da faixa do menu */
+            height: 80px; /* Altura confortável para o topo */
+            transition: var(--transition);
+        }
+
+        header.scrolled .nav-container {
+            height: 70px; /* Reduz levemente a faixa ao rolar */
         }
 
         /* Ajuste do Campo da Logomarca */
@@ -81,12 +91,16 @@
         }
 
         .logo-img {
-            height: 100%; /* Ocupa 100% da altura da faixa (70px) */
-            width: auto;  /* Ajusta a largura proporcionalmente à imagem */
-            max-height: 70px;
+            height: 100%; 
+            width: auto;  
+            max-height: 80px;
             display: block;
-            object-fit: contain; /* Garante que a imagem não distorça */
+            object-fit: contain; 
             transition: var(--transition);
+        }
+
+        header.scrolled .logo-img {
+            max-height: 70px;
         }
 
         nav {
@@ -102,7 +116,22 @@
             align-items: center;
         }
 
-        nav a:hover, nav a.active { color: var(--accent-green); }
+        /* Links brancos enquanto o topo for transparente */
+        nav ul li a {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Cor ativa inicial */
+        nav a.active { color: var(--accent-green); }
+        nav a:hover { color: var(--accent-green); }
+
+        /* Links escuros quando a página rolar */
+        header.scrolled nav ul li a {
+            color: var(--text-dark);
+        }
+        header.scrolled nav a.active { color: var(--primary-dark); font-weight: 600; }
+        header.scrolled nav a:hover { color: var(--primary-dark); }
 
         .cta-header {
             background: var(--primary-dark);
@@ -110,12 +139,21 @@
             padding: 0.6rem 1.5rem;
             border-radius: var(--radius);
             font-weight: 600;
+            border: 2px solid transparent;
+        }
+
+        /* Estilo do botão de destaque no topo transparente */
+        header:not(.scrolled) .cta-header {
+            background: rgba(15, 76, 58, 0.85);
+            border-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
         }
 
         .cta-header:hover {
-            background: var(--accent-green);
+            background: var(--accent-green) !important;
             color: var(--primary-dark) !important;
             transform: translateY(-2px);
+            border-color: transparent;
         }
 
         /* --- MOBILE MENU --- */
@@ -123,13 +161,18 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--primary-dark);
+            color: #ffffff; /* Branco no início */
+            transition: var(--transition);
+        }
+
+        header.scrolled .mobile-toggle {
+            color: var(--primary-dark); /* Escuro ao rolar */
         }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(15, 76, 58, 0.7), rgba(0, 0, 0, 0.4)), 
+            background: linear-gradient(rgba(15, 76, 58, 0.65), rgba(0, 0, 0, 0.45)), 
                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -243,7 +286,7 @@
         .product-info h3 { margin-bottom: 0.5rem; color: var(--primary-dark); font-size: 1.25rem; }
         .product-info p { color: var(--text-gray); font-size: 0.95rem; }
 
-        /* --- PORTFÓLIO (Grade de 6 Fotos) --- */
+        /* --- PORTFÓLIO --- */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -328,7 +371,7 @@
         }
 
         .footer-logo-img {
-            height: 70px; /* Mantém o padrão visual do topo no rodapé */
+            height: 70px;
             width: auto;
             display: block;
             object-fit: contain;
@@ -432,26 +475,27 @@
             .portfolio-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .footer-bottom-container { flex-direction: column; text-align: center; }
-            .nav-container { height: 60px; } /* Reduz ligeiramente a faixa no mobile */
-            .logo-img { max-height: 60px; } 
+            
+            .nav-container { height: 70px; }
+            header.scrolled .nav-container { height: 60px; }
+            .logo-img { max-height: 70px; } 
+            header.scrolled .logo-img { max-height: 60px; }
             .footer-logo-img { height: 60px; }
         }
     </style>
     
     <style>
-        /* CSS Adicional da Seção de Produtos */
+        /* CSS Seção de Produtos */
         .products-bg{
             background: #ffffff;
             padding: 100px 5%;
         }
-
         .product-grid{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 50px;
         }
-
         .product-card{
             background: #fff;
             border-radius: 24px;
@@ -459,18 +503,15 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.10);
             transition: all 0.4s ease;
         }
-
         .product-card:hover{
             transform: translateY(-10px);
             box-shadow: 0 18px 45px rgba(0,0,0,0.18);
         }
-
         .product-img{
             width: 100%;
             height: 260px;
             overflow: hidden;
         }
-
         .product-img img{
             width: 100%;
             height: 100%;
@@ -478,32 +519,12 @@
             transition: transform 0.6s ease;
             display: block;
         }
+        .product-card:hover .product-img img{ transform: scale(1.12); }
+        .product-info{ padding: 30px; }
+        .product-info h3{ font-size: 24px; margin-bottom: 15px; color: #111; font-weight: 700; }
+        .product-info p{ color: #666; line-height: 1.8; font-size: 16px; }
 
-        .product-card:hover .product-img img{
-            transform: scale(1.12);
-        }
-
-        .product-info{
-            padding: 30px;
-        }
-
-        .product-info h3{
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #111;
-            font-weight: 700;
-        }
-
-        .product-info p{
-            color: #666;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        @media(max-width: 1024px){
-            .product-grid{ grid-template-columns: repeat(2, 1fr); }
-        }
-
+        @media(max-width: 1024px){ .product-grid{ grid-template-columns: repeat(2, 1fr); } }
         @media(max-width: 768px){
             .products-bg{ padding: 80px 20px; }
             .product-grid{ grid-template-columns: 1fr; gap: 25px; }
@@ -515,18 +536,16 @@
     </style>
 
     <style>
-        /* CSS Adicional da Seção de Portfólio */
+        /* CSS Seção de Portfólio */
         #portfolio{
             padding: 100px 5%;
             background: #f8f8f8;
         }
-
         .portfolio-grid{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-
         .portfolio-item{
             position: relative;
             overflow: hidden;
@@ -536,7 +555,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             transition: 0.4s ease;
         }
-
         .portfolio-item img{
             width: 100%;
             height: 100%;
@@ -544,30 +562,17 @@
             transition: transform 0.6s ease;
             display: block;
         }
-
         .portfolio-item:hover img{ transform: scale(1.12); }
         .portfolio-item:hover{ transform: translateY(-8px); }
-
         .portfolio-overlay{
             position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
+            left: 0; bottom: 0; width: 100%;
             padding: 30px 25px;
             background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.05));
             color: #fff;
         }
-
-        .portfolio-overlay h4{
-            font-size: 22px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .portfolio-overlay p{
-            font-size: 15px;
-            opacity: 0.92;
-        }
+        .portfolio-overlay h4{ font-size: 22px; margin-bottom: 8px; font-weight: 700; }
+        .portfolio-overlay p{ font-size: 15px; opacity: 0.92; }
 
         @media(max-width: 768px){
             #portfolio{ padding: 80px 20px; }
@@ -579,7 +584,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="site-header">
         <div class="nav-container">
             <div class="brand-container">
                 <a href="#">
@@ -782,6 +787,17 @@
     </a>
 
     <script>
+        // Interatividade do Scroll: Header Transparente -> Header Sólido
+        const header = document.getElementById('site-header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // Menu Hamburguer Mobile Interativo
         const menuToggle = document.getElementById('menu-toggle');
         const navLinksList = document.getElementById('nav-links');
@@ -793,12 +809,16 @@
                 navLinksList.style.display = 'flex';
                 navLinksList.style.flexDirection = 'column';
                 navLinksList.style.position = 'absolute';
-                navLinksList.style.top = '70px'; /* Alinhado com a altura da faixa */
+                navLinksList.style.top = '70px';
                 navLinksList.style.left = '0';
                 navLinksList.style.width = '100%';
                 navLinksList.style.background = 'white';
                 navLinksList.style.padding = '1.5rem';
-                navLinksList.style.boxShadow = '0 10px 15px rgba(0,0,0,0.05)';
+                navLinksList.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)';
+                
+                // Força os links mobile a ficarem escuros quando o menu abrir independente do scroll
+                const mobileLinks = navLinksList.querySelectorAll('a');
+                mobileLinks.forEach(link => link.style.color = 'var(--text-dark)');
             }
         });
 
@@ -810,7 +830,6 @@
                     navLinksList.style.display = 'none';
                 }
                 
-                // Atualizar Classe Ativa visualmente
                 links.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
             });
