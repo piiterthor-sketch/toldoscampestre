@@ -421,28 +421,41 @@
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="brand-container">
-                <a href="#">
-                    <img src="images/logo.jpg" alt="Logo Toldos Campestre" class="logo-img">
-                </a>
-            </div>
-            
-            <nav>
-                <ul id="nav-links">
-                    <li><a href="#home" class="active">Início</a></li>
-                    <li><a href="#sobre">Quem Somos</a></li>
-                    <li><a href="#produtos">Soluções</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                </ul>
-            </nav>
-            
-            <a href="https://wa.me/5531986238781?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." target="_blank" class="cta-header">Orçamento Rápido</a>
-            
-            <div class="mobile-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+    <header class="main-header">
+    <div class="nav-container">
+        <!-- Área da Logo: Alinhada e Protegida -->
+        <div class="brand-container">
+            <a href="#home" aria-label="Ir para a página inicial">
+                <img src="images/logo.jpg" alt="Logo Toldos Campestre" class="logo-img">
+            </a>
         </div>
-    </header>
+        
+        <!-- Menu de Navegação Centralizado/Alinhado -->
+        <nav class="nav-menu">
+            <ul id="nav-links">
+                <li class="nav-item"><a href="#home" class="nav-link active">Início</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">Quem Somos</a></li>
+                <li class="nav-item"><a href="#produtos" class="nav-link">Soluções</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfólio</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Botão de Ação (CTA) Destacado -->
+        <div class="actions-container">
+            <a href="https://wa.me/5531986238781?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20de%20toldo." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="cta-header">
+                <i class="fab fa-whatsapp"></i> Orçamento Rápido
+            </a>
+        </div>
+        
+        <!-- Gatilho do Menu Mobile -->
+        <div class="mobile-toggle" id="menu-toggle" aria-label="Abrir menu de navegação">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
 
     <section class="hero" id="home">
         <div class="hero-content">
