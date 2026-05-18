@@ -46,7 +46,7 @@
 
         a { text-decoration: none; color: inherit; transition: var(--transition); }
 
-        /* --- HEADER TOTALMENTE TRANSPARENTE --- */
+        /* --- HEADER TRANSPARENTE E DINÂMICO --- */
         header {
             position: fixed;
             top: 0;
@@ -56,44 +56,44 @@
             transition: var(--transition);
         }
 
-        /* Ativado via JavaScript no scroll */
         header.scrolled {
             background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
             transition: var(--transition);
         }
 
-        header.scrolled .nav-container {
-            height: 75px; /* Compacta levemente ao rolar */
+        /* --- LOGO ARREDONDADA E MAIOR --- */
+        .brand-container {
+            display: block;
         }
 
-        /* --- LOGO REDONDA (TODAS AS LOGO.JPG) --- */
         .logo-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%; /* Torna a logo perfeitamente redonda */
-            object-fit: cover; /* Impede que a imagem fique distorcida/achatada */
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            background-color: #ffffff; /* Garante fundo branco caso o fundo do JPG mude */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 110px; /* Tamanho maior e imponente */
+            height: 110px;
+            border-radius: 50%; /* Perfeitamente circular */
+            object-fit: cover; /* Impede distorções na imagem */
+            background-color: #ffffff;
+            border: 3px solid #ffffff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             transition: var(--transition);
             display: block;
         }
 
+        /* Ajuste sutil da logo ao rolar a página */
         header.scrolled .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 95px;
+            height: 95px;
             border-color: var(--primary-dark);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         nav {
@@ -108,7 +108,6 @@
             align-items: center;
         }
 
-        /* Links brancos por padrão no topo transparente */
         nav ul li a {
             color: #ffffff;
             font-weight: 500;
@@ -119,14 +118,14 @@
         nav a.active { color: var(--accent-green); font-weight: 600; }
         nav a:hover { color: var(--accent-green); }
 
-        /* Links escuros após o scroll */
+        /* Estado dos links no scroll */
         header.scrolled nav ul li a {
             color: var(--text-dark);
         }
         header.scrolled nav a.active { color: var(--primary-dark); font-weight: 700; }
         header.scrolled nav a:hover { color: var(--primary-dark); }
 
-        /* Botão de Orçamento no Cabeçalho */
+        /* Botão de Orçamento Rápido */
         .cta-header {
             background: var(--primary-dark);
             color: white !important;
@@ -152,10 +151,10 @@
             box-shadow: 0 6px 20px rgba(130, 200, 119, 0.4);
         }
 
-        /* Botão Hamburger Mobile */
+        /* Menu Mobile Hamburguer */
         .mobile-toggle {
             display: none;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             cursor: pointer;
             color: #ffffff;
             transition: var(--transition);
@@ -259,10 +258,7 @@
             transition: all 0.4s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 45px rgba(0,0,0,0.15);
-        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 18px 45px rgba(0,0,0,0.15); }
 
         .product-img {
             width: 100%;
@@ -327,7 +323,7 @@
         .portfolio-overlay h4 { font-size: 20px; margin-bottom: 6px; font-weight: 700; }
         .portfolio-overlay p { font-size: 14px; color: var(--accent-green); opacity: 0.95; }
 
-        /* --- HISTÓRIA / CONVERSÃO --- */
+        /* --- HISTÓRIA --- */
         .contact-cta {
             background: var(--primary-dark);
             color: white;
@@ -338,7 +334,7 @@
         .contact-cta h2 { font-size: 2.4rem; margin-bottom: 1.5rem; font-family: 'Montserrat', sans-serif; }
         .contact-cta p { margin-bottom: 1.5rem; opacity: 0.9; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.05rem; line-height: 1.8; }
 
-        /* --- FOOTER COM LOGO REDONDA --- */
+        /* --- FOOTER --- */
         footer {
             background: #0a3528;
             color: rgba(255, 255, 255, 0.8);
@@ -358,13 +354,13 @@
             flex-direction: column;
         }
 
-        /* Estilo para manter a logo redonda no rodapé */
+        /* Logo Redonda e Grande no Footer */
         .footer-col .logo-img {
-            width: 80px;
-            height: 80px;
+            width: 125px;
+            height: 125px;
             margin-bottom: 1.5rem;
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         .footer-description {
@@ -419,7 +415,7 @@
         .dev-credits a { color: var(--accent-green); font-weight: 600; }
         .dev-credits a:hover { text-decoration: underline; }
 
-        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
+        /* --- BOTÃO FLUTUANTE --- */
         .whatsapp-fixed {
             position: fixed;
             bottom: 25px;
@@ -438,7 +434,7 @@
         }
         .whatsapp-fixed:hover { transform: scale(1.1); background: #20ba5a; }
 
-        /* --- RESPONSIVIDADE FILTRADA --- */
+        /* --- RESPONSIVIDADE COMPLETA --- */
         @media (max-width: 1024px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
             .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
@@ -458,8 +454,15 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .footer-bottom-container { flex-direction: column; text-align: center; }
             
-            .nav-container { height: 80px; }
-            header.scrolled .nav-container { height: 70px; }
+            /* Ajuste de escala para mobile da logo */
+            .logo-img {
+                width: 90px;
+                height: 90px;
+            }
+            header.scrolled .logo-img {
+                width: 80px;
+                height: 80px;
+            }
         }
     </style>
 </head>
@@ -664,18 +667,18 @@
     </a>
 
     <script>
-        // Transição do Cabeçalho: Transparente para Sólido ao rolar
+        // Transição do Scroll: Transparente para Sólido
         const header = document.getElementById('site-header');
         
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
+            if (window.scrollY > 30) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        // Menu Mobile Hamburguer 
+        // Menu Mobile Hamburguer
         const menuToggle = document.getElementById('menu-toggle');
         const navLinksList = document.getElementById('nav-links');
 
@@ -686,20 +689,19 @@
                 navLinksList.style.display = 'flex';
                 navLinksList.style.flexDirection = 'column';
                 navLinksList.style.position = 'absolute';
-                navLinksList.style.top = '80px';
+                navLinksList.style.top = '100px'; /* Margem segura para não sobrepor a logo grande */
                 navLinksList.style.left = '0';
                 navLinksList.style.width = '100%';
                 navLinksList.style.background = '#ffffff';
                 navLinksList.style.padding = '2rem 1.5rem';
                 navLinksList.style.boxShadow = '0 15px 20px rgba(0,0,0,0.1)';
                 
-                // Força links escuros no menu mobile aberto
                 const mobileLinks = navLinksList.querySelectorAll('a');
                 mobileLinks.forEach(link => link.style.color = 'var(--text-dark)');
             }
         });
 
-        // Auto-fechar menu mobile ao clicar em um link
+        // Auto-fechar menu ao clicar (Mobile)
         const links = document.querySelectorAll('#nav-links a');
         links.forEach(link => {
             link.addEventListener('click', () => {
