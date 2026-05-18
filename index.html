@@ -495,66 +495,71 @@
             </div>
             
     </section>
+<!-- PORTFÓLIO -->
+<section class="section" id="portfolio">
 
-   <section class="section" id="portfolio">
     <h2 class="section-title">Nosso Portfólio</h2>
+
     <p class="section-subtitle">
         Conheça o padrão dos projetos executados recentemente por nossa equipe de especialistas.
     </p>
 
     <div class="portfolio-grid">
 
-      <div class="portfolio-item">
+        <!-- FOTO 1 -->
+        <div class="portfolio-item">
+            <img src="images/toldo1.jpg" alt="Toldo Premium 1">
 
-    <img src="images/toldo1.jpg" alt="Portfólio">
-
-    <div class="portfolio-overlay">
-        <h4>Residência Campestre Premium</h4>
-        <p>Toldo Retrátil Articulado</p>
-    </div>
-
-</div>
-            
             <div class="portfolio-overlay">
                 <h4>Residência Campestre Premium</h4>
                 <p>Toldo Retrátil Articulado</p>
             </div>
         </div>
 
-        <div class="portfolio-item"
-            style="background-image: url('images/portfolio2.jpg')">
+        <!-- FOTO 2 -->
+        <div class="portfolio-item">
+            <img src="images/toldo2.jpg" alt="Toldo Premium 2">
+
             <div class="portfolio-overlay">
                 <h4>Espaço Gourmet Integrado</h4>
                 <p>Cobertura Fixa Estrutural</p>
             </div>
         </div>
 
-        <div class="portfolio-item"
-            style="background-image: url('images/portfolio3.jpg')">
+        <!-- FOTO 3 -->
+        <div class="portfolio-item">
+            <img src="images/toldo3.jpg" alt="Toldo Premium 3">
+
             <div class="portfolio-overlay">
                 <h4>Bistrô e Fachada Comercial</h4>
                 <p>Toldo Fixo com Design Italiano</p>
             </div>
         </div>
 
-        <div class="portfolio-item"
-            style="background-image: url('images/portfolio4.jpg')">
+        <!-- FOTO 4 -->
+        <div class="portfolio-item">
+            <img src="images/toldo4.jpg" alt="Toldo Premium 4">
+
             <div class="portfolio-overlay">
                 <h4>Varanda Residencial Moderna</h4>
                 <p>Toldo Cortina de Alta Resistência</p>
             </div>
         </div>
 
-        <div class="portfolio-item"
-            style="background-image: url('images/portfolio5.jpg')">
+        <!-- FOTO 5 -->
+        <div class="portfolio-item">
+            <img src="images/toldo5.jpg" alt="Toldo Premium 5">
+
             <div class="portfolio-overlay">
                 <h4>Garagem e Área de Acesso</h4>
-                <p>Cobertura de Policarbonato Alveolar</p>
+                <p>Cobertura de Policarbonato</p>
             </div>
         </div>
 
-        <div class="portfolio-item"
-            style="background-image: url('images/portfolio6.jpg')">
+        <!-- FOTO 6 -->
+        <div class="portfolio-item">
+            <img src="images/toldo6.jpg" alt="Toldo Premium 6">
+
             <div class="portfolio-overlay">
                 <h4>Terraço de Lazer Campestre</h4>
                 <p>Toldo Abre-e-Fecha Premium</p>
@@ -562,7 +567,144 @@
         </div>
 
     </div>
+
 </section>
+
+<!-- CSS -->
+<style>
+
+/* ===== PORTFÓLIO ===== */
+
+#portfolio{
+    padding: 100px 5%;
+    background: #f8f8f8;
+}
+
+.section-title{
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.section-subtitle{
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    color: #666;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* GRID */
+
+.portfolio-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+
+.portfolio-item{
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    height: 340px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: 0.4s ease;
+}
+
+/* IMAGEM */
+
+.portfolio-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+/* EFEITO HOVER */
+
+.portfolio-item:hover img{
+    transform: scale(1.12);
+}
+
+.portfolio-item:hover{
+    transform: translateY(-8px);
+}
+
+/* OVERLAY */
+
+.portfolio-overlay{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 30px 25px;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.88),
+        rgba(0,0,0,0.05)
+    );
+    color: #fff;
+}
+
+.portfolio-overlay h4{
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.portfolio-overlay p{
+    font-size: 15px;
+    opacity: 0.92;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 1024px){
+
+    .portfolio-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 768px){
+
+    #portfolio{
+        padding: 80px 20px;
+    }
+
+    .section-title{
+        font-size: 32px;
+    }
+
+    .section-subtitle{
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .portfolio-grid{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .portfolio-item{
+        height: 280px;
+    }
+
+    .portfolio-overlay h4{
+        font-size: 20px;
+    }
+
+}
+
+</style>
 
     <section class="contact-cta">
         <h2>Pronto para transformar seu espaço?</h2>
